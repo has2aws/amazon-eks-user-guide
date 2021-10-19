@@ -68,13 +68,15 @@ Because a private cluster has no outbound internet access, container images can'
 
 ## VPC endpoints for private clusters<a name="vpc-endpoints-private-clusters"></a>
 
-The following [VPC endpoints](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-endpoints.html) might be required\.
+The following [VPC endpoints](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-endpoints.html) are mandatory for the cluster to operate\.
 + `com.amazonaws.<region>.ec2`
 + `com.amazonaws.<region>.ecr.api`
 + `com.amazonaws.<region>.ecr.dkr`
 + `com.amazonaws.<region>.s3` – For pulling container images
++ `com.amazonaws.<region>.sts` – If using Cluster Autoscaler or IAM roles for service accounts (VPC CNI requires IRSA)
+
+The following [VPC endpoints](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-endpoints.html) are optional, you can enable them per functionality requirements\.
 + `com.amazonaws.<region>.logs` – For CloudWatch Logs
-+ `com.amazonaws.<region>.sts` – If using Cluster Autoscaler or IAM roles for service accounts
 + `com.amazonaws.<region>.elasticloadbalancing` – If using Application Load Balancers
 + `com.amazonaws.<region>.autoscaling` – If using Cluster Autoscaler
 + `com.amazonaws.<region>.appmesh-envoy-management` – If using App Mesh
